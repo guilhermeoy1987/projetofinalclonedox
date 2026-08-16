@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Clone X</title>
+    <style>
+        body { background-color: black; color: white; font-family: Arial, sans-serif; margin: 0; }
+        .sidebar { 
+            width: 200px; 
+            border-right: 1px solid #333; 
+            height: 100vh; 
+            position: fixed; 
+            padding: 20px;
+            z-index: 1000; /* <--- position correcta da pagin*/
+        }
+        .main-content { margin-left: 240px; padding: 20px; }
+        .nav-link { color: white; text-decoration: none; font-size: 1.2rem; display: block; margin-bottom: 15px; }
+        .nav-link:hover { color: #1DA1F2; } /* Cor azul do Twitter ao passar o mouse */
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>X</h1>
+        <nav>
+            <a href="{% url 'feed' %}" class="nav-link">Início</a>
+            <a href="{% url 'profile' %}" class="nav-link">Perfil</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

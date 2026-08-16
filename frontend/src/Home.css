@@ -1,0 +1,154 @@
+
+.home-container {
+  display: flex;            
+  justify-content: center;
+  margin: 0 auto;
+  gap: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+  color: #0f1419;
+}
+
+
+.sidebar {
+  width: 250px;
+  padding: 10px;
+}
+
+.timeline {
+  flex: 1;                
+  border-left: 1px solid #71c9f8;
+  border-right: 1px solid #71c9f8;
+  padding: 0 15px;
+}
+
+
+.widgets {
+  width: 350px;
+  padding: 10px;
+}
+
+.tweet-button {
+  background-color: #15202b;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 30px;
+  cursor: pointer;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+}
+
+.post-card {
+  border-bottom: 1px solid #333;
+  padding: 15px 0;
+}
+
+.post-main {
+  display: flex;
+  gap: 10px;
+}
+
+.post-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.post-content-area {
+  flex: 1;
+}
+
+.post-time {
+  color: #888;
+  font-size: 13px;
+  margin-left: 8px;
+}
+
+.post-text {
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+.comments-container {
+  margin-left: 20px;
+  border-left: 2px solid #333;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.comment-item {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.comment-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+}
+
+.comment-username {
+  font-weight: bold;
+}
+
+.comment-text {
+  font-size: 14px;
+}
+
+.post-actions {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  margin-top: 15px;
+  margin-left: 50px;
+}
+
+.action-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.like-btn {
+  color: #e0245e;
+}
+
+.comment-btn {
+  color: #1da1f2;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 20px;
+  border: none;
+  background: #253341;
+  color: #fff;
+}
+
+.logout-item {
+  color: #e0245e;
+  cursor: pointer;
+  margin-top: 20px;
+}

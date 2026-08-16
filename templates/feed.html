@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Página Inicial</h1>
+    
+    {% for post in posts %}
+        <div style="border-bottom: 1px solid #333; padding: 10px 0;">
+            <strong>{{ post.user.username }}</strong>
+            <p>{{ post.content }}</p>
+            <small>{{ post.created_at }}</small>
+        </div>
+    {% empty %}
+        <p>Nenhuma postagem no momento.</p>
+    {% endfor %}
+{% endblock %}

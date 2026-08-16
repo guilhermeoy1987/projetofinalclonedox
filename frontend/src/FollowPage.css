@@ -1,0 +1,110 @@
+/* Container principal da página de seguidores */
+.follow-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* codigo do Título e botão de voltar */
+.follow-container h1 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f1419;
+  margin-bottom: 20px;
+}
+
+.back-home-btn {
+  background-color: #1d9bf0;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 20px;
+  transition: background-color 0.2s;
+}
+
+.back-home-btn:hover {
+  background-color: #1a8cd8;
+}
+
+/*ess e e o codigo xd de  Lista de usuários */
+.follow-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.follow-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #eff3f4;
+}
+
+.follow-username {
+  font-weight: bold;
+  font-size: 16px;
+  color: #0f1419;
+}
+
+/* codigo para separar botão perfeitamente*/
+.follow-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* codigo do  Botão de Ver Perfil */
+.btn-view-profile {
+  background-color: #eff3f4;
+  color: #0f1419;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-view-profile:hover {
+  background-color: #d7dbdc;
+}
+
+/*codigp do  Botão de Seguir / Seguindo */
+.btn-follow-toggle {
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* codig o pa nao alterado a cor Não está seguindo (Preto sólido) */
+.btn-follow-toggle.not-following {
+  background-color: #0f1419;
+  color: #ffffff;
+  border: 1px solid #0f1419;
+}
+
+.btn-follow-toggle.not-following:hover {
+  background-color: #272c30;
+}
+
+/*  codigo de alteracao de  estado: Já está seguindo (Branco com borda) */
+.btn-follow-toggle.is-following {
+  background-color: #ffffff;
+  color: #0f1419;
+  border: 1px solid #cfd9de;
+}
+
+.btn-follow-toggle.is-following:hover {
+  background-color: rgba(244, 33, 46, 0.1);
+  color: #f4212e;
+  border-color: rgba(244, 33, 46, 0.4);
+}

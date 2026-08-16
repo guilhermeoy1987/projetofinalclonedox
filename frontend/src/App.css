@@ -1,0 +1,63 @@
+/* codigo que es Centraliza o formulário na tela */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f9f9;
+  font-family: Arial, sans-serif;
+}
+
+/*cores do medidas Estilo do cartão do formulário */
+form {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  text-align: center;
+}
+
+/* cores do medidas Estilo do bos campos de input */
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box; /*importante que  Garante que o padding não quebre o layout */
+}
+
+/* cores do medidas Estilo do botão */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #1d9bf0; /* Azul estilo Twitter */
+  color: white; 
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #1a8cd8;
+}
+
+/* Estilo para o link de cadastro */
+.register-link {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #536471;
+}
+
+.register-link a {
+  color: #1d9bf0; /* cores do Azul do Twitter */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
