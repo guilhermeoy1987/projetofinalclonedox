@@ -33,3 +33,21 @@ Este projeto foi desenvolvido como parte da minha transição de carreira para a
 - **Atenção aos Detalhes de UI/UX:** Capacidade de traduzir interfaces complexas do mundo real em código limpo, componentizado e funcional.
 - **Foco na Experiência do Usuário (UX):** Implementação de fluxos intuitivos de onboarding (como o assistente de configuração de perfil) que elevam a retenção e usabilidade da aplicação.
 - **Código Limpo e Escalável:** Organização modular do CSS e separação clara de responsabilidades entre os componentes.
+
+  ## ⚙️ Instruções Claras de Uso (Como executar localmente)
+
+Se você deseja clonar e executar este projeto em sua máquina localmente para testes, siga os passos abaixo:
+Dicas importantes  para rodar o projeto: 
+### 1. Clonar o repositório
+Abra o seu terminal e execute:
+```bash
+git clone [https://github.com/guilhermeoy1987/projetofinalclonedox.git](https://github.com/guilhermeoy1987/projetofinalclonedox.git)
+cd projetofinalclonedox
+
+2. Instalar as dependências
+Certifique-se de ter o Node.js instalado em sua máquina e execute: npm install
+
+3. Executar o projeto em ambiente de desenvolvimento
+npm start
+
+A aplicação abrirá automaticamente no seu navegador padrão na porta http://localhost:3000.
