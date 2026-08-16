@@ -72,35 +72,35 @@ function EditProfileModal({
             </div>
           )}
 
-          {/* Passo 2: Banner / Header */}
-          {step === 2 && (
-            <div className="profile-modal-step-content">
-              <h2>Pick a header</h2>
-              <p>People who visit your profile will see it. Show your style.</p>
-              <div 
-                className="profile-banner-upload-box"
-                style={{
-                  backgroundImage: selectedBanner 
-                    ? `url(${URL.createObjectURL(selectedBanner)})` 
-                    : bannerBg
-                }}
-              >
-                <div className="profile-banner-camera-icon">
-                  📷
-                </div>
-                <input 
-                  type="file" 
-                  accept="image/jpeg, image/png"
-                  onChange={(e) => {
-                    if (e.target.files && e.target.files[0]) {
-                      setSelectedBanner(e.target.files[0]);
-                    }
-                  }}
-                  className="profile-avatar-input-file" 
-                />
-              </div>
-            </div>
-          )}
+       {/* Passo 2: Banner / Header */}
+{step === 2 && (
+  <div className="profile-modal-step-content">
+    <h2>Pick a header</h2>
+    <p>People who visit your profile will see it. Show your style.</p>
+    <div 
+      className="profile-modal-banner-box"
+      style={{
+        backgroundImage: selectedBanner 
+          ? `url(${URL.createObjectURL(selectedBanner)})` 
+          : bannerBg
+      }}
+    >
+      <div className="profile-banner-camera-icon">
+        📷
+      </div>
+      <input 
+        type="file" 
+        accept="image/jpeg, image/png"
+        onChange={(e) => {
+          if (e.target.files && e.target.files[0]) {
+            setSelectedBanner(e.target.files[0]);
+          }
+        }}
+        className="profile-avatar-input-file" 
+      />
+    </div>
+  </div>
+)}
 
           {/* Passo 3: Bio */}
           {step === 3 && (
