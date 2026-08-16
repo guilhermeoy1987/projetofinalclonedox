@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import api from './services/api';
 
 function ProfilePage() {
-  const { id } = useParams(); // codigo importante que Pega o ID dinâmico da URL (exemplos: /profile/2 -> id = 2)
+  const { id } = useParams();
   const [profileData, setProfileData] = useState(null);
   const [userPosts, setUserPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,16 +13,18 @@ function ProfilePage() {
       try {
         const token = localStorage.getItem('access');
         
-        // 1.api que das importante saber  Busca os dados do perfil do usuário na API do backend
-        const profileResponse = await axios.get(`http://127.0.0.1:8000/api/users/${id}/profile/`, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-        setProfileData(profileResponse.data);
+        // Requisições utilizando a instância 'api' e rotas relativas
+        // O uso do Promise.all agiliza o carregamento dos dados
+        const [profileResponse, postsResponse] = await Promise.all([
+          api.get(`users/${id}/profile/`, {
+            headers: { Authorization: `Bearer ${token}` }
+          }),
+          api.get(`posts/?user=${id}`, {
+            headers: { Authorization: `Bearer ${token}` }
+          })
+        ]);
 
-        // 2. APi dinamica api atraves do link Busca os posts específicos desse usuário
-        const postsResponse = await axios.get(`http://127.0.0.1:8000/api/posts/?user=${id}`, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        setProfileData(profileResponse.data);
         setUserPosts(postsResponse.data);
 
       } catch (error) {
@@ -35,7 +37,7 @@ function ProfilePage() {
     if (id) {
       fetchProfileAndPosts();
     }
-  }, [id]); // esse é o codigo que esse codigo Executa novamente sempre que o ID na URL mudar
+  }, [id]);
 
   if (loading) {
     return <p style={{ textAlign: 'center', marginTop: '50px' }}>Carregando perfil...</p>;
@@ -47,10 +49,10 @@ function ProfilePage() {
 
   return (
     <div className="profile-container">
-      {/*eses é  o Cabeçalho do Perfil */}
+      {/* Cabeçalho do Perfil */}
       <div className="profile-header">
         <h2>{profileData.username}</h2>
-        <p>{profileData.bio || "@{profileData.username}"}</p>
+        <p>{profileData.bio || `@${profileData.username}`}</p>
         <p>📍 {profileData.location || "Ribeirão Preto, SP"}</p>
         
         <div className="profile-stats">
@@ -59,7 +61,7 @@ function ProfilePage() {
         </div>
       </div>
 
-      {/* aca aparece a  Lista de Posts do Usuário */}
+      {/* mostra Lista de Posts do Usuário */}
       <div className="user-posts-section">
         <h3>Posts</h3>
         {userPosts.length === 0 ? (

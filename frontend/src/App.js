@@ -5,8 +5,6 @@ import Register from './Register';
 import Home from './Home';
 import Profile from './Profile';
 import FollowPage from './FollowPage';
-import ProfileRedirect from './ProfileRedirect';
-import ProfilePage from './ProfilePage';
 
 function App() {
   return (
@@ -19,11 +17,9 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/follow" element={<FollowPage />} />
-        <Route path="/profile" element={<ProfileRedirect />} />
-        <Route path="/profile/:id" element={<ProfilePage />} />
       </Routes>
     </Router>
   );
 }
 
-export default App; 
+export default App;

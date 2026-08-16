@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'; // usar o mesmo CSS do Login
+import api from './services/api';
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -20,7 +21,7 @@ function Register() {
 
     try {
       // par a a Envia os dados para a API de registro do Django que criamos
-      await axios.post('http://127.0.0.1:8000/api/register/', {
+      await api.post('register/', {
         username: username,
         email: email,
         password: password
@@ -29,9 +30,15 @@ function Register() {
       alert('Conta criada com sucesso! Faça o login.');
       navigate('/login'); //aqui  Redireciona para a tela de login
       
-    } catch (error) {
+   } catch (error) {
       console.error("Erro no cadastro:", error.response ? error.response.data : error.message);
-      alert('Erro ao criar conta. Verifique os dados ou escolha outro usuário.');
+      
+      // Mude esta linha do alert para mostrar a resposta do servidor:
+      const mensagemErro = error.response && error.response.data 
+        ? JSON.stringify(error.response.data) 
+        : 'Erro ao criar conta.';
+      
+      alert(mensagemErro);
     }
   };
 

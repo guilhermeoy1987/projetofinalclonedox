@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './CommentModal.css';
+import api from './services/api';
 
 function CommentModal({ post, onClose, onCommentCreated }) {
   const [content, setContent] = useState('');
@@ -14,7 +14,8 @@ function CommentModal({ post, onClose, onCommentCreated }) {
       setLoading(true);
       const token = localStorage.getItem('access');
       
-      await axios.post(`http://127.0.0.1:8000/api/posts/${post.id}/comments/`, 
+      // Usando o objeto 'api' para apontar para o servidor na nuvem
+      await api.post(`posts/${post.id}/comments/`, 
         { content },
         {
           headers: {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
 import './Profile.css';
 import EditProfileModal from './EditProfileModal';
+import api from './services/api';
 
 function Profile() {
   const navigate = useNavigate();
@@ -33,14 +33,14 @@ function Profile() {
       }
       
       const profileEndpoint = id 
-        ? `http://127.0.0.1:8000/api/users/${id}/profile/` 
-        : 'http://127.0.0.1:8000/api/users/update/';
+        ? `users/${id}/profile/` 
+        : 'users/update/';
 
       const [profileResponse, postsResponse] = await Promise.all([
-        axios.get(profileEndpoint, {
+        api.get(profileEndpoint, {
           headers: { Authorization: `Bearer ${token}` }
         }),
-        axios.get('http://127.0.0.1:8000/api/posts/', {
+        api.get('posts/', {
           headers: { Authorization: `Bearer ${token}` }
         })
       ]);
@@ -76,7 +76,7 @@ function Profile() {
 
   const fetchFollowersList = async (targetId, token) => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/users/${targetId}/followers/`, {
+      const response = await api.get(`users/${targetId}/followers/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setFollowersList(response.data);
@@ -87,7 +87,7 @@ function Profile() {
 
   const fetchFollowingList = async (targetId, token) => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/users/${targetId}/following/`, {
+      const response = await api.get(`users/${targetId}/following/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setFollowingList(response.data);
@@ -105,7 +105,7 @@ function Profile() {
   const handleToggleFollow = async () => {
     try {
       const token = localStorage.getItem('access');
-      const response = await axios.post(`http://127.0.0.1:8000/api/users/${id}/follow/`, {}, {
+      const response = await api.post(`users/${id}/follow/`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -134,7 +134,7 @@ function Profile() {
       if (selectedFile) formData.append('avatar', selectedFile);
       if (selectedBanner) formData.append('banner', selectedBanner);
 
-      const response = await axios.patch('http://127.0.0.1:8000/api/users/update/', formData, {
+      const response = await api.patch('users/update/', formData, {
         headers: { 
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
@@ -174,7 +174,7 @@ function Profile() {
 
   const getImageUrl = (imagePath) => {
     if (!imagePath) return '';
-    return imagePath.startsWith('http') ? imagePath : `http://127.0.0.1:8000${imagePath}`;
+    return imagePath.startsWith('http') ? imagePath : `https://projetofinalclonedox.onrender.com${imagePath}`;
   };
 
   const bannerBg = selectedBanner 

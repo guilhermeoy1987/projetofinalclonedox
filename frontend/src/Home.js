@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from './services/api';
 import TweetModal from './TweetModal'; 
-import CommentModal from './CommentModal'; 
+import CommentModal from './CommentModal';
 
 function Home() {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ function Home() {
       }
 
       console.log("🌐 Fazendo requisicao para a API de posts...");
-      const response = await axios.get('http://127.0.0.1:8000/api/posts/', {
+      const response = await api.get('posts/', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -79,7 +79,7 @@ function Home() {
         navigate('/login');
         return;
       }
-      await axios.post(`http://127.0.0.1:8000/api/posts/${postId}/like/`, {}, {
+      await api.post(`posts/${postId}/like/`, {}, {
         headers: {
           Authorization: `Bearer ${token}`
         }

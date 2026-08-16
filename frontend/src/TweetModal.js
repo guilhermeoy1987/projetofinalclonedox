@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './TweetModal.css';
+import api from './services/api';
 
 function TweetModal({ onClose, onPostCreated }) {
   const [content, setContent] = useState('');
@@ -10,7 +10,8 @@ function TweetModal({ onClose, onPostCreated }) {
 
     try {
       const token = localStorage.getItem('access');
-      const response = await axios.post('http://127.0.0.1:8000/api/posts/', {
+      // esse codigo esta Usando o 'api' configurado com a URL do Render
+      const response = await api.post('posts/', {
         content: content
       }, {
         headers: {

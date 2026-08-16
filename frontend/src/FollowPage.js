@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './FollowPage.css';
+import api from './services/api';
 
 function FollowPage() {
   const [users, setUsers] = useState([]);
@@ -10,7 +10,7 @@ function FollowPage() {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('access');
-      const response = await axios.get('http://127.0.0.1:8000/api/users/', {
+      const response = await api.get('users/', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(response.data);
@@ -20,7 +20,7 @@ function FollowPage() {
   };
 
   const handleToggleFollow = async (userId) => {
-    // 1. esse codigo faz a alteracap  do estado visual no exato momento do clique
+    // 1. Faz a alteração do estado visual no exato momento do clique
     setUsers((prevUsers) =>
       prevUsers.map((user) =>
         user.id === userId
@@ -31,13 +31,13 @@ function FollowPage() {
 
     try {
       const token = localStorage.getItem('access');
-      const response = await axios.post(
-        `http://127.0.0.1:8000/api/users/${userId}/follow/`,
+      const response = await api.post(
+        `users/${userId}/follow/`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      //esse  que faz o mapa e os codigo que fazer a confirmação do estado retornado pela API
+      // Confirmação do estado retornado pela API
       if (response.data && response.data.is_following !== undefined) {
         setUsers((prevUsers) =>
           prevUsers.map((user) =>
@@ -49,7 +49,7 @@ function FollowPage() {
       }
     } catch (error) {
       console.error("Erro ao seguir usuário:", error);
-      // 3.caso bnao encontrar e caso se der erro no servidor, reverte para o estado anterior
+      // Reverte para o estado anterior caso ocorra erro
       setUsers((prevUsers) =>
         prevUsers.map((user) =>
           user.id === userId
@@ -64,7 +64,7 @@ function FollowPage() {
     fetchUsers();
   }, []);
 
-  // codigo para Filtrar o usuário logado para não aparecer na lista de ouro usuario
+  //ess e codigo  Filtrar o usuário logado para não aparecer na lista
   const currentUsername = localStorage.getItem('username');
   const filteredUsers = users.filter((user) => user.username !== currentUsername);
 

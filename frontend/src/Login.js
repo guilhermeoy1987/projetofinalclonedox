@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Login.css';
+import api from './services/api';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -11,7 +12,8 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/login/', {
+      //  codigo de Usando o 'api' em vez do 'axios' e removendo a URL completa
+      const response = await api.post('login/', {
         username: username,
         password: password
       });
@@ -26,7 +28,13 @@ function Login() {
       
     } catch (error) {
       console.error("Erro na autenticação:", error.response ? error.response.data : error.message);
-      alert('Erro ao fazer login. Verifique seu usuário e senha.');
+      
+      // menssagem  mostrar o erro real vindo do Django para facilitar o debug
+      const mensagemErro = error.response && error.response.data 
+        ? JSON.stringify(error.response.data) 
+        : 'Erro ao fazer login. Verifique seu usuário e senha.';
+      
+      alert(mensagemErro);
     }
   };
 
